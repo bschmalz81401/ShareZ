@@ -111,7 +111,7 @@ final class AnnotationWindowController: NSWindowController, NSWindowDelegate {
 final class AnnotationToolbar: NSView {
     private let canvas: AnnotationCanvasView
     private let copyAction: () -> Void
-    private var toolButtons: [ToolType: NSButton] = [:]
+    private var toolSegment: NSSegmentedControl!
     private var colorWell: NSColorWell!
     private var sizeSlider: NSSlider!
 
@@ -127,28 +127,30 @@ final class AnnotationToolbar: NSView {
     required init?(coder: NSCoder) { fatalError() }
 
     private func setupControls() {
-        var x: CGFloat = 8
-
-        for tool in ToolType.allCases {
-            let btn = NSButton(frame: CGRect(x: x, y: 10, width: 36, height: 36))
-            btn.bezelStyle = .regularSquare
-            btn.isBordered = false
-            btn.image = NSImage(systemSymbolName: tool.rawValue, accessibilityDescription: tool.label)
-            btn.image?.isTemplate = true
-            btn.toolTip = tool.label
-            btn.target = self
-            btn.action = #selector(toolSelected(_:))
-            btn.tag = ToolType.allCases.firstIndex(of: tool)!
-            if tool == .pen { btn.state = .on }
-            addSubview(btn)
-            toolButtons[tool] = btn
-            x += 38
+        // Tool selector — NSSegmentedControl is reliable for selection state
+        let toolNames = ToolType.allCases.map { $0.rawValue }
+        toolSegment = NSSegmentedControl(frame: CGRect(x: 8, y: 10, width: CGFloat(toolNames.count) * 36, height: 36))
+        toolSegment.segmentCount = toolNames.count
+        toolSegment.trackingMode = .selectOne
+        toolSegment.segmentStyle = .texturedSquare
+        for (i, name) in toolNames.enumerated() {
+            let img = NSImage(systemSymbolName: name, accessibilityDescription: ToolType.allCases[i].label)
+            toolSegment.setImage(img, forSegment: i)
+            toolSegment.setImageScaling(.scaleProportionallyDown, forSegment: i)
+            toolSegment.setToolTip(ToolType.allCases[i].label, forSegment: i)
+            toolSegment.setWidth(36, forSegment: i)
         }
+        toolSegment.selectedSegment = 0  // pen
+        toolSegment.target = self
+        toolSegment.action = #selector(toolSelected(_:))
+        addSubview(toolSegment)
 
-        let sep = NSBox(frame: CGRect(x: x + 4, y: 8, width: 1, height: 40))
+        var x = toolSegment.frame.maxX + 12
+
+        let sep = NSBox(frame: CGRect(x: x, y: 8, width: 1, height: 40))
         sep.boxType = .separator
         addSubview(sep)
-        x += 14
+        x += 10
 
         colorWell = NSColorWell(frame: CGRect(x: x, y: 13, width: 30, height: 30))
         colorWell.color = canvas.drawingState.color
@@ -163,23 +165,23 @@ final class AnnotationToolbar: NSView {
         addSubview(sizeLabel)
         x += 36
 
-        sizeSlider = NSSlider(frame: CGRect(x: x, y: 18, width: 70, height: 20))
+        sizeSlider = NSSlider(frame: CGRect(x: x, y: 18, width: 80, height: 20))
         sizeSlider.minValue = 1
         sizeSlider.maxValue = 20
         sizeSlider.doubleValue = Double(canvas.drawingState.lineWidth)
         sizeSlider.target = self
         sizeSlider.action = #selector(sizeChanged)
         addSubview(sizeSlider)
-        x += 78
+        x += 90
 
-        let copyBtn = NSButton(frame: CGRect(x: x, y: 10, width: 100, height: 36))
+        let copyBtn = NSButton(frame: CGRect(x: x, y: 10, width: 80, height: 36))
         copyBtn.title = "Copy"
         copyBtn.bezelStyle = .rounded
         copyBtn.target = self
         copyBtn.action = #selector(copyTapped)
         addSubview(copyBtn)
 
-        let saveBtn = NSButton(frame: CGRect(x: x + 108, y: 10, width: 100, height: 36))
+        let saveBtn = NSButton(frame: CGRect(x: x + 88, y: 10, width: 80, height: 36))
         saveBtn.title = "Save…"
         saveBtn.bezelStyle = .rounded
         saveBtn.target = self
@@ -187,10 +189,8 @@ final class AnnotationToolbar: NSView {
         addSubview(saveBtn)
     }
 
-    @objc private func toolSelected(_ sender: NSButton) {
-        let tool = ToolType.allCases[sender.tag]
-        canvas.drawingState.toolType = tool
-        for (t, btn) in toolButtons { btn.state = t == tool ? .on : .off }
+    @objc private func toolSelected(_ sender: NSSegmentedControl) {
+        canvas.drawingState.toolType = ToolType.allCases[sender.selectedSegment]
     }
 
     @objc private func colorChanged() {
