@@ -208,17 +208,14 @@ final class AnnotationToolbar: NSView {
     @objc private func saveTapped() {
         guard let image = canvas.renderedImage() else { return }
         let panel = NSSavePanel()
-        panel.allowedContentTypes = [.png, .jpeg]
+        panel.allowedContentTypes = [.png]
         panel.nameFieldStringValue = "screenshot"
         panel.begin { response in
             guard response == .OK, let url = panel.url else { return }
             guard let tiff = image.tiffRepresentation,
-                  let bitmap = NSBitmapImageRep(data: tiff) else { return }
-            let ext = url.pathExtension.lowercased()
-            let data = ext == "jpg" || ext == "jpeg"
-                ? bitmap.representation(using: .jpeg, properties: [.compressionFactor: 0.9])
-                : bitmap.representation(using: .png, properties: [:])
-            try? data?.write(to: url)
+                  let bitmap = NSBitmapImageRep(data: tiff),
+                  let data = bitmap.representation(using: .png, properties: [:]) else { return }
+            try? data.write(to: url)
         }
     }
 }
