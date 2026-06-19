@@ -1,0 +1,38 @@
+name: ShareZ
+options:
+  bundleIdPrefix: com.bschmalz
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15"
+
+targets:
+  ShareZ:
+    type: application
+    platform: macOS
+    sources:
+      - Sources/ShareZ
+    info:
+      path: Sources/ShareZ/Info.plist
+      properties:
+        CFBundleName: ShareZ
+        CFBundleDisplayName: ShareZ
+        CFBundleIdentifier: com.bschmalz.ShareZ
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSMinimumSystemVersion: "13.0"
+        NSPrincipalClass: NSApplication
+        LSUIElement: true
+        NSScreenCaptureUsageDescription: "ShareZ needs access to record your screen for capturing screenshots."
+        NSAppleEventsUsageDescription: "ShareZ uses Apple Events for automation."
+    entitlements:
+      path: Sources/ShareZ/ShareZ.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.screen-capture: true
+    settings:
+      SWIFT_VERSION: "5.9"
+      MACOSX_DEPLOYMENT_TARGET: "13.0"
+      CODE_SIGN_IDENTITY: "-"
+      CODE_SIGN_STYLE: Manual
+      PRODUCT_BUNDLE_IDENTIFIER: com.bschmalz.ShareZ
+      ENABLE_PREVIEWS: NO

@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0253C202D2D98D7DB56DE7D1 /* AnnotationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE74E307ADCC8CCB265F7A /* AnnotationTool.swift */; };
+		4BE3F20E5F5AD4F7D1AE2153 /* RegionSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */; };
+		6C68E79E2A805F1CE464A44E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F95DFCF91834AA1BA19C8D /* main.swift */; };
+		95AD3F917190444F68C40E89 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124A646A2536BF88D900171 /* AnnotationView.swift */; };
+		9974CE9B547A9F23981444D2 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */; };
+		DD7D1D2C886DC2F55A3BA700 /* AnnotationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */; };
+		E12028DC468A24C32D66038D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80226A0BBA16B11AD54C9AC /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B7D7A307C5C079D17CA58CF /* ShareZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FEE74E307ADCC8CCB265F7A /* AnnotationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationTool.swift; sourceTree = "<group>"; };
+		4124A646A2536BF88D900171 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectorView.swift; sourceTree = "<group>"; };
+		64B5E31F1DF7F2B5990AAF12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A80226A0BBA16B11AD54C9AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationWindowController.swift; sourceTree = "<group>"; };
+		B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
+		C6E2CB608C45B480E19FDEF9 /* ShareZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareZ.entitlements; sourceTree = "<group>"; };
+		F3F95DFCF91834AA1BA19C8D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		287D6FCE4371DF14A37CE229 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3FEE74E307ADCC8CCB265F7A /* AnnotationTool.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		443201AE37444A64F8EEC8BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4124A646A2536BF88D900171 /* AnnotationView.swift */,
+				B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */,
+				5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5D5DC4B13D4BA9ADF088D73F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B7D7A307C5C079D17CA58CF /* ShareZ.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80A65D6B506A5F4C837C98D0 = {
+			isa = PBXGroup;
+			children = (
+				B89916C3D843913CD879C9F3 /* ShareZ */,
+				5D5DC4B13D4BA9ADF088D73F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B89916C3D843913CD879C9F3 /* ShareZ */ = {
+			isa = PBXGroup;
+			children = (
+				A80226A0BBA16B11AD54C9AC /* AppDelegate.swift */,
+				64B5E31F1DF7F2B5990AAF12 /* Info.plist */,
+				F3F95DFCF91834AA1BA19C8D /* main.swift */,
+				C6E2CB608C45B480E19FDEF9 /* ShareZ.entitlements */,
+				EA5A629A3C1AC92BAE59C5BB /* Managers */,
+				287D6FCE4371DF14A37CE229 /* Models */,
+				443201AE37444A64F8EEC8BD /* Views */,
+			);
+			name = ShareZ;
+			path = Sources/ShareZ;
+			sourceTree = "<group>";
+		};
+		EA5A629A3C1AC92BAE59C5BB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8444A59DC2FC15B5AC77E62F /* ShareZ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E70C8DBF33C71DD9480144F3 /* Build configuration list for PBXNativeTarget "ShareZ" */;
+			buildPhases = (
+				1061C045AB3D5E83D75F565B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareZ;
+			packageProductDependencies = (
+			);
+			productName = ShareZ;
+			productReference = 3B7D7A307C5C079D17CA58CF /* ShareZ.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5918CC15A1F0D192FA24B7DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					8444A59DC2FC15B5AC77E62F = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = BE2D647051E73AE83B491D81 /* Build configuration list for PBXProject "ShareZ" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 80A65D6B506A5F4C837C98D0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5D5DC4B13D4BA9ADF088D73F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8444A59DC2FC15B5AC77E62F /* ShareZ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1061C045AB3D5E83D75F565B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0253C202D2D98D7DB56DE7D1 /* AnnotationTool.swift in Sources */,
+				95AD3F917190444F68C40E89 /* AnnotationView.swift in Sources */,
+				DD7D1D2C886DC2F55A3BA700 /* AnnotationWindowController.swift in Sources */,
+				E12028DC468A24C32D66038D /* AppDelegate.swift in Sources */,
+				9974CE9B547A9F23981444D2 /* CaptureManager.swift in Sources */,
+				4BE3F20E5F5AD4F7D1AE2153 /* RegionSelectorView.swift in Sources */,
+				6C68E79E2A805F1CE464A44E /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15E2E10E50DE16EE7BD17F94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/ShareZ/ShareZ.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = NO;
+				INFOPLIST_FILE = Sources/ShareZ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bschmalz.ShareZ;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		2EFB8FFEBC7902B4175625BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		338AED9FD72A259B07E70926 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		552BD4852A966185E013E91D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/ShareZ/ShareZ.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = NO;
+				INFOPLIST_FILE = Sources/ShareZ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bschmalz.ShareZ;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE2D647051E73AE83B491D81 /* Build configuration list for PBXProject "ShareZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338AED9FD72A259B07E70926 /* Debug */,
+				2EFB8FFEBC7902B4175625BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E70C8DBF33C71DD9480144F3 /* Build configuration list for PBXNativeTarget "ShareZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15E2E10E50DE16EE7BD17F94 /* Debug */,
+				552BD4852A966185E013E91D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5918CC15A1F0D192FA24B7DC /* Project object */;
+}
