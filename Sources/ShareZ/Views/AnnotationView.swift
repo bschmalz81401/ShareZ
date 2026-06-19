@@ -129,37 +129,12 @@ final class AnnotationCanvasView: NSView {
     // MARK: - Render to image
 
     func renderedImage() -> NSImage? {
-        guard let base = baseImage else { return nil }
-        let size = bounds.size
-        guard size.width > 0, size.height > 0 else { return nil }
-
-        let scale = window?.backingScaleFactor ?? 2.0
-        let pixW = Int(size.width * scale)
-        let pixH = Int(size.height * scale)
-
-        guard let rep = NSBitmapImageRep(
-            bitmapDataPlanes: nil, pixelsWide: pixW, pixelsHigh: pixH,
-            bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true,
-            isPlanar: false, colorSpaceName: .deviceRGB,
-            bytesPerRow: 0, bitsPerPixel: 0)
-        else { return nil }
-        rep.size = size
-
-        NSGraphicsContext.saveGraphicsState()
-        guard let gc = NSGraphicsContext(bitmapImageRep: rep) else {
-            NSGraphicsContext.restoreGraphicsState()
-            return nil
-        }
-        NSGraphicsContext.current = gc
-        let ctx = gc.cgContext
-
-        ctx.scaleBy(x: scale, y: scale)
-        base.draw(in: CGRect(origin: .zero, size: size))
-        for el in elements { drawElement(el, in: ctx) }
-
-        NSGraphicsContext.restoreGraphicsState()
-
-        let result = NSImage(size: size)
+        guard bounds.width > 0, bounds.height > 0 else { return nil }
+        // cacheDisplay renders the view through the normal AppKit drawing path,
+        // so coordinate systems, scaling, and flipping are all handled correctly.
+        guard let rep = bitmapImageRepForCachingDisplay(in: bounds) else { return nil }
+        cacheDisplay(in: bounds, to: rep)
+        let result = NSImage(size: bounds.size)
         result.addRepresentation(rep)
         return result
     }
