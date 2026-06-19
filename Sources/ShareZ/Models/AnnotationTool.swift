@@ -123,10 +123,13 @@ enum AnnotationElement {
                 .font: NSFont.systemFont(ofSize: t.fontSize, weight: .semibold),
                 .foregroundColor: t.color
             ]
-            let str = NSAttributedString(string: t.text, attributes: attrs)
-            let line = CTLineCreateWithAttributedString(str)
-            ctx.textPosition = t.origin
-            CTLineDraw(line, ctx)
+            // NSAttributedString.draw respects AppKit's coordinate system correctly
+            // in both flipped and unflipped contexts.
+            NSGraphicsContext.saveGraphicsState()
+            if let gc = NSGraphicsContext.current {
+                NSAttributedString(string: t.text, attributes: attrs).draw(at: t.origin)
+            }
+            NSGraphicsContext.restoreGraphicsState()
 
         case .blur(let b):
             // Handled separately at render time — needs source bitmap
