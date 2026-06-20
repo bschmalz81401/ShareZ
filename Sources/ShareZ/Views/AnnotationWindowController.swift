@@ -1,12 +1,36 @@
 import Cocoa
 
 private func makePNG(from image: NSImage) -> Data? {
-    if let rep = image.representations.first as? NSBitmapImageRep {
-        return rep.representation(using: .png, properties: [:])
-    }
-    guard let tiff = image.tiffRepresentation,
-          let bitmap = NSBitmapImageRep(data: tiff) else { return nil }
-    return bitmap.representation(using: .png, properties: [:])
+    let size = image.size
+    guard size.width > 0, size.height > 0 else { return nil }
+
+    // Draw into a fresh CGBitmapContext at 2x so we always get a clean RGBA bitmap
+    let scale: CGFloat = 2
+    let w = Int(size.width * scale)
+    let h = Int(size.height * scale)
+    guard let ctx = CGContext(
+        data: nil, width: w, height: h,
+        bitsPerComponent: 8, bytesPerRow: 0,
+        space: CGColorSpaceCreateDeviceRGB(),
+        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+    ) else { return nil }
+
+    ctx.scaleBy(x: scale, y: scale)
+
+    // CGBitmapContext has (0,0) at top-left with Y down; flip to match NSImage drawing
+    ctx.translateBy(x: 0, y: size.height)
+    ctx.scaleBy(x: 1, y: -1)
+
+    NSGraphicsContext.saveGraphicsState()
+    let gc = NSGraphicsContext(cgContext: ctx, flipped: false)
+    NSGraphicsContext.current = gc
+    image.draw(in: NSRect(origin: .zero, size: size))
+    NSGraphicsContext.restoreGraphicsState()
+
+    guard let cgImage = ctx.makeImage() else { return nil }
+    let rep = NSBitmapImageRep(cgImage: cgImage)
+    rep.size = size
+    return rep.representation(using: .png, properties: [:])
 }
 
 final class AnnotationWindowController: NSWindowController, NSWindowDelegate {
