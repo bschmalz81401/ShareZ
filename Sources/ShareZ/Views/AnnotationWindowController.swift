@@ -1,5 +1,14 @@
 import Cocoa
 
+private func makePNG(from image: NSImage) -> Data? {
+    if let rep = image.representations.first as? NSBitmapImageRep {
+        return rep.representation(using: .png, properties: [:])
+    }
+    guard let tiff = image.tiffRepresentation,
+          let bitmap = NSBitmapImageRep(data: tiff) else { return nil }
+    return bitmap.representation(using: .png, properties: [:])
+}
+
 final class AnnotationWindowController: NSWindowController, NSWindowDelegate {
     private let canvas: AnnotationCanvasView
     private var toolbar: AnnotationToolbar!
@@ -69,11 +78,13 @@ final class AnnotationWindowController: NSWindowController, NSWindowDelegate {
     }
 
     private func copyToClipboard() {
-        guard let image = canvas.renderedImage() else { return }
+        guard let image = canvas.renderedImage(),
+              let png = makePNG(from: image) else { return }
         NSPasteboard.general.clearContents()
-        NSPasteboard.general.writeObjects([image])
+        NSPasteboard.general.setData(png, forType: .png)
         showCopiedToast()
     }
+
 
     private func showCopiedToast() {
         guard let win = window else { return }
@@ -206,18 +217,20 @@ final class AnnotationToolbar: NSView {
     }
 
     @objc private func saveTapped() {
-        guard let image = canvas.renderedImage() else { return }
+        guard let image = canvas.renderedImage(),
+              let png = makePNG(from: image) else { return }
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.png]
         panel.nameFieldStringValue = "screenshot"
         panel.begin { response in
-            guard response == .OK, let url = panel.url else { return }
-            guard let tiff = image.tiffRepresentation,
-                  let bitmap = NSBitmapImageRep(data: tiff),
-                  let data = bitmap.representation(using: .png, properties: [:]) else { return }
-            try? data.write(to: url)
+            guard response == .OK, var url = panel.url else { return }
+            if url.pathExtension.lowercased() != "png" {
+                url = url.appendingPathExtension("png")
+            }
+            try? png.write(to: url)
         }
     }
+
 }
 
 // MARK: - Window Picker
