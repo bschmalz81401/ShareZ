@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0253C202D2D98D7DB56DE7D1 /* AnnotationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE74E307ADCC8CCB265F7A /* AnnotationTool.swift */; };
+		45D5E5AAC9667E7FF6133902 /* HotkeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E82A266475986C34F3503 /* HotkeyManager.swift */; };
 		4BE3F20E5F5AD4F7D1AE2153 /* RegionSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */; };
 		6C68E79E2A805F1CE464A44E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F95DFCF91834AA1BA19C8D /* main.swift */; };
 		95AD3F917190444F68C40E89 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4124A646A2536BF88D900171 /* AnnotationView.swift */; };
 		9974CE9B547A9F23981444D2 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */; };
 		DD7D1D2C886DC2F55A3BA700 /* AnnotationWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */; };
 		E12028DC468A24C32D66038D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80226A0BBA16B11AD54C9AC /* AppDelegate.swift */; };
+		E343FEF602AE108A9C724764 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8CD6D37A4FCAD366BB476 /* PreferencesWindowController.swift */; };
+		FF800D5A4CBFE6BF063520E6 /* HotkeyBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D11ECCB534CE353D5C87494 /* HotkeyBinding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +25,14 @@
 		4124A646A2536BF88D900171 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectorView.swift; sourceTree = "<group>"; };
 		64B5E31F1DF7F2B5990AAF12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7D11ECCB534CE353D5C87494 /* HotkeyBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyBinding.swift; sourceTree = "<group>"; };
 		A80226A0BBA16B11AD54C9AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationWindowController.swift; sourceTree = "<group>"; };
 		B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
 		C6E2CB608C45B480E19FDEF9 /* ShareZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareZ.entitlements; sourceTree = "<group>"; };
+		CA9E82A266475986C34F3503 /* HotkeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyManager.swift; sourceTree = "<group>"; };
 		F3F95DFCF91834AA1BA19C8D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F4F8CD6D37A4FCAD366BB476 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -34,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				3FEE74E307ADCC8CCB265F7A /* AnnotationTool.swift */,
+				7D11ECCB534CE353D5C87494 /* HotkeyBinding.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -43,6 +50,7 @@
 			children = (
 				4124A646A2536BF88D900171 /* AnnotationView.swift */,
 				B2E186FFAF9685807EAF6D35 /* AnnotationWindowController.swift */,
+				F4F8CD6D37A4FCAD366BB476 /* PreferencesWindowController.swift */,
 				5E76ED2219B5B044C3FC6A2C /* RegionSelectorView.swift */,
 			);
 			path = Views;
@@ -83,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B68E8BC45C9D4E62220EB904 /* CaptureManager.swift */,
+				CA9E82A266475986C34F3503 /* HotkeyManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -150,6 +159,9 @@
 				DD7D1D2C886DC2F55A3BA700 /* AnnotationWindowController.swift in Sources */,
 				E12028DC468A24C32D66038D /* AppDelegate.swift in Sources */,
 				9974CE9B547A9F23981444D2 /* CaptureManager.swift in Sources */,
+				FF800D5A4CBFE6BF063520E6 /* HotkeyBinding.swift in Sources */,
+				45D5E5AAC9667E7FF6133902 /* HotkeyManager.swift in Sources */,
+				E343FEF602AE108A9C724764 /* PreferencesWindowController.swift in Sources */,
 				4BE3F20E5F5AD4F7D1AE2153 /* RegionSelectorView.swift in Sources */,
 				6C68E79E2A805F1CE464A44E /* main.swift in Sources */,
 			);
