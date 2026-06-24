@@ -12,6 +12,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupStatusItem()
         setupHotkeyManager()
         requestScreenCapturePermission()
+        requestAccessibilityPermission()
     }
 
     // MARK: - Status Item
@@ -100,6 +101,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             Task { await captureManager.requestPermission() }
         } else {
             CGRequestScreenCaptureAccess()
+        }
+    }
+
+    private func requestAccessibilityPermission() {
+        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
+        let trusted = AXIsProcessTrustedWithOptions(options)
+        if !trusted {
+            // Poll until granted, then reinstall hotkeys
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.pollAccessibilityUntilGranted()
+            }
+        }
+    }
+
+    private func pollAccessibilityUntilGranted() {
+        if AXIsProcessTrusted() {
+            HotkeyManager.shared.install()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                self?.pollAccessibilityUntilGranted()
+            }
         }
     }
 }
